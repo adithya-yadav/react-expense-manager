@@ -8,6 +8,7 @@ const NewExpenseForm = ()=>{
     const AddExp = (e)=>{
         e.preventDefault()
         console.log("Add expense");
+        console.log("New Expense");
     }
     return <form>
         <div className="new-expense__controls">
