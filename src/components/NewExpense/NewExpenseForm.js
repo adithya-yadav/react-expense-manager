@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewExpenseForm.css";
 
 const NewExpenseForm = ()=>{
+    const [enteredTitle, setEnteredTitle] = useState('')
+    const [enteredNumber , setEnteredNumber] = useState('')
+    const [enteredDate , setEnteredDate] = useState('')
+
     const TitleChange = (e)=>{
-        console.log(e.target.value)
+        setEnteredTitle(e.target.value)
+    }
+    const NumberChange = (e)=>{
+        setEnteredNumber(e.target.value)
+    }
+    const DateChange = (e)=>{
+        setEnteredDate(e.target.value)
     }
     const AddExp = (e)=>{
         e.preventDefault()
-        console.log("Add expense");
-        console.log("New Expense");
+        const expenseData = {
+            title:enteredTitle,
+            amount:enteredNumber,
+            date:enteredDate
+        }
+        console.log(expenseData);
     }
-    return <form>
+    return <form onSubmit={AddExp}>
         <div className="new-expense__controls">
         <div className="new-expense__control">
             <label>Title</label>
@@ -18,15 +32,15 @@ const NewExpenseForm = ()=>{
         </div>
         <div className="new-expense__control">
             <label>Amount</label>
-            <input type="number" />
+            <input onChange={NumberChange} type="number" />
         </div>
         <div className="new-expense__control">
             <label>Date</label>
-            <input type="date" />
+            <input onChange={DateChange} type="date" />
         </div>
         </div>
         <div className="new-expense-actions">
-            <button onClick={AddExp} type="submit">Add Expense</button>
+            <button type="submit">Add Expense</button>
         </div>
     </form>
 }
