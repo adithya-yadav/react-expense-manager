@@ -28,10 +28,11 @@ const NewExpenseForm = (props)=>{
             const expenseData = {
                 title:enteredTitle,
                 amount:enteredNumber,
-                date:enteredDate,
+                date:new Date(enteredDate),
                 location:enteredLocation
             }
             props.onSaveExpenseData(expenseData)
+            // console.log("newExpenseData",expenseData)
         }else{
             alert("please fill details")
         }

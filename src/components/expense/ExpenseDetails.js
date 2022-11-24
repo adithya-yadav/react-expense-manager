@@ -12,8 +12,8 @@ const ExpenseDetails=(props)=>{
   return (
     <div className="expense-item__description">
       <h2>{title}</h2>
-      <div className="expense-item__location">Maid in {props.location}</div>
-      <div className="expense-item__price">{amount}</div>
+      <div className="expense-item__location">Made in {props.location}</div>
+      <div className="expense-item__price">$ {amount}</div>
       <button onClick={Edit}>Edit Expense</button>
     </div>
   );
