@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { ReactDOM } from "react";
 import Expense from "./components/expense/Expense";
 import NewExpense from "./components/NewExpense/NewExpense";
 
@@ -34,9 +35,14 @@ const App=()=>{
       location: "delhi",
     },
   ];
+  const onAddExpenseDataHandler = (onNewlyAddedExpense)=>{
+    console.log("newAddedData", onNewlyAddedExpense)
+    expense.push(onNewlyAddedExpense)
+    console.log(expense)
+  }
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onAddExpenseData={onAddExpenseDataHandler}/>
       <Expense item={expense} />
     </div>
   )
