@@ -3,6 +3,7 @@ import "./App.css";
 import { ReactDOM, useState } from "react";
 import Expense from "./components/expense/Expense";
 import NewExpense from "./components/NewExpense/NewExpense";
+import "./components/NewExpense/NewExpenseForm.css";
 
 const dummyExp = [
   {
@@ -49,22 +50,20 @@ const dummyExp = [
   },
 ];
 
-const App=()=>{
+const App = () => {
+  const [expenses, SetExpense] = useState(dummyExp);
 
-  const [expenses,SetExpense] = useState(dummyExp)
-
-  const onAddExpenseDataHandler = (onNewlyAddedExpense)=>{
+  const onAddExpenseDataHandler = (onNewlyAddedExpense) => {
     const updatedExpenses = [onNewlyAddedExpense, ...expenses];
-    console.log("EXPENSES!!!!      ", updatedExpenses);
-    SetExpense(updatedExpenses);    
+    SetExpense(updatedExpenses);
   };
- 
+
   return (
     <div>
-      <NewExpense onAddExpenseData={onAddExpenseDataHandler}/>
+      <NewExpense onAddExpenseData={onAddExpenseDataHandler} />
       <Expense items={expenses} />
     </div>
-  )
-}
+  );
+};
 
 export default App;

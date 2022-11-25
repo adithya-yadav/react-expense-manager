@@ -1,8 +1,8 @@
-import ExpenseItem from "./Expenseitem";
+
 import Card from "../UI/Card";
-import "./Expense.css";
 import ExpenseFilter from "./ExpenseFilter";
 import { useState } from "react";
+import ExpenseList from "./ExpenseList";
 
 const Expense = (props) => {
   const [filteredYear, setFilteredYear] = useState("allExp");
@@ -18,36 +18,7 @@ const Expense = (props) => {
     });
   }
 
-  let ListContent = <p className="emptyList">No expense in this year</p>;
-
-  if (filteredExpense.length > 1) {
-    ListContent = filteredExpense.map((expense) => {
-      return (
-        <ExpenseItem
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-          location={expense.location}
-          key={expense.id}
-        />
-      );
-    });
-  } else if (filteredExpense.length === 1) {
-    ListContent = filteredExpense.map((expense) => {
-      return (
-        <div key={expense.id}>
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-            location={expense.location}
-            key={expense.id}
-          />
-          <p className="emptyList">Only single Expense here. Please add more...</p>
-        </div>
-      );
-    });
-  }
+  
 
   return (
     <Card className="expense">
@@ -56,7 +27,7 @@ const Expense = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {ListContent}
+        <ExpenseList filteredItems = {filteredExpense}/>
       </div>
     </Card>
   );
