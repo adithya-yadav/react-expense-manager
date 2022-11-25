@@ -7,6 +7,7 @@ const NewExpenseForm = (props)=>{
     const [enteredDate , setEnteredDate] = useState('')
     const [enteredLocation , setEnteredLocation] = useState('')
 
+
     const TitleChange = (e)=>{
         setEnteredTitle(e.target.value)
     }
